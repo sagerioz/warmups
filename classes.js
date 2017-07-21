@@ -4,5 +4,14 @@ function Person(first, last, age) {
     this.age = age;
     this.name = function() {return this.firstName + " " + this.lastName;};
 }
-var daughter = new Person("Rio", "Dawson", 18)
-console.log(daughter);
+
+
+Person.prototype.bio = function () {
+  return `${this.firstName} is ${this.age} years old and lives in ${this.hometown}`
+}
+
+Person.prototype.hometown = this.hometown;
+
+let father = new Person("Sterlie", "Epperson", 50)
+father.hometown = "Downieville"
+console.log(father.bio());
