@@ -1,3 +1,9 @@
+// binary tree: unsorted
+
+// binary search tree: already sorted and largest values are always on the right node
+
+
+
 function BinaryTreeNode(value) {
     this.value = value;
     this.left  = null;
