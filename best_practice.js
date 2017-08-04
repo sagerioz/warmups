@@ -35,7 +35,9 @@ var isOn = !condition;
 
 // Some thoughts:
 
-// I code both styles not for efficiency but based on the behavior of the application.
+
+
+// I code these styles not for efficiency but based on the behavior of the application.
 //
 // If condition is false more often than true, I code the first style to keep it readable and basically say “We are setting the default state unless an exception occurs”.
 //
