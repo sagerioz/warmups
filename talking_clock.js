@@ -2,56 +2,71 @@
 // which translate the time to a written or spoken version of that time.
 // 00:00 => "It's twelve am"
 // 01:30 => 'It's one thirty am"
-// 02:01 => "It's two oh one pm"
+// 22:01 => "It's two oh one pm"
 
-function sayItWithArr(str){
-  let tempArr = str.split(':')
-  console.log('ARRAY ',tempArr);
-  let answer = 'The time is ';
-  let bigArr = ['twelve','one', 'two', 'three']
+const HOURS = [
+  'twelve',
+  'one',
+  'two',
+  'three',
+  'four',
+  'five',
+  'six',
+  'seven',
+  'eight',
+  'nine',
+  'ten',
+  'eleven'
+]
 
-  for (let i = 0; i < tempArr.length; i ++){
-      let timeNum = parseInt(tempArr[i])
-      console.log(bigArr[i])
-      if(timeNum){
-      answer += bigArr[timeNum] + ' '
-    }
+const ONES = [
+  '',
+  'one',
+  'two',
+  'three',
+  'four',
+  'five',
+  'six',
+  'seven',
+  'eight',
+  'nine'
+]
+
+const TEENS = [
+  'ten',
+  'eleven',
+  'twelve',
+  'thirteen',
+  'fourteen',
+  'fifteen',
+  'sixteen',
+  'seventeen',
+  'eighteen',
+  'nineteen'
+]
+
+const TENS = [
+  '',
+  '',
+  'twenty',
+  'thirty',
+  'forty',
+  'fifty'
+]
+
+function sayIt(time){
+  const [h,m] = time.split(':').map(n => parseInt(n))
+  console.log([h,m]);
+  const hour = HOURS[ h % 12 ]
+  let minute = ''
+  if(m < 10){
+    minute = `oh ${ONES[m]}`
+  }else if (m < 20){
+    minute = `${TEENS[m]}`
+  }else{
+    minute = `${TENS[m / 10]} ${ONES[m % 10]}`
   }
-  return answer;
+  const suffix = (h < 12) ? 'am' : 'pm'
+  return ["It's", hour, minute, suffix].join(' ');
 }
-console.log(sayItWithArr('02:03'));
-
-function sayItWithObj(str){
-  let tempArr = str.split(':')
-  console.log('ARRAY ',tempArr);
-  let answer = 'The time is ';
-  let dict = {
-    00:'twelve',
-    1:'one',
-    2:'two',
-    3:'three',
-    4:'four',
-    5:'five',
-    6:'six',
-    7:'seven',
-    8:'eight',
-    9:'nine',
-    10:'ten',
-    11:'eleven',
-    12:'twelve'
-  };
-
-  console.log(Object.keys(dict))
-  for (let i=0; i<tempArr.length; i++){
-    let item = tempArr[i];
-    item = parseInt(item);
-    console.log(item)
-
-    if(item === dict[item]){
-      answer += dict[item]
-      console.log(answer);
-    }
-  }
-  return answer;
-}
-console.log(sayIt('02:03'));
+console.log(sayIt('13:01'));
