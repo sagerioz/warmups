@@ -56,7 +56,6 @@ const TENS = [
 
 function sayIt(time){
   const [h,m] = time.split(':').map(n => parseInt(n))
-  console.log([h,m]);
   const hour = HOURS[ h % 12 ]
   let minute = ''
   if(m < 10){
