@@ -1,4 +1,8 @@
-// Given a number, create a grid which starts with 1 and ends with n squared
+// Given a number, create a grid which starts with 1 and ends with n squared, ie:
+//   [ [ 1, 2, 3, 4 ],
+//   [ 12, 13, 14, 5 ],
+//   [ 11, 16, 15, 6 ],
+//   [ 10, 9, 8, 7 ] ]
 
 
 function spiralGrid(n){
@@ -24,4 +28,4 @@ while (number <= n * n){
 
   return grid;
 }
-console.log(spiralGrid(6));
+console.log(spiralGrid(4));
