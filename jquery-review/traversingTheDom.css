@@ -1,0 +1,12 @@
+.container * {
+    display: block;
+    border: 2px solid DarkSeaGreen;
+    color: DarkSeaGreen;
+    padding: 5px;
+    margin: 15px;
+    background: PapayaWhip;
+}
+
+body {
+  background: PeachPuff;
+}
