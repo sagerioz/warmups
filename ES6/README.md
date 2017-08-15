@@ -33,6 +33,7 @@ becomes:
 ```
 name + ' has lost her ' + animal
 ```
+ES6:
 ```
 const x = [1,2,3]
 foo([..x]);
