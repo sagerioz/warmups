@@ -1,4 +1,5 @@
 #ES6 Notes
+----------------------------------
 Transpiler: Use babeljs.io to write next-gen Javascript, and get browser compatible code out!
 
 Examples:
@@ -11,7 +12,7 @@ becomes:
 [1,2,3].map(n, function(n){
   return Math.pow(n, 2)
   });
-----------------------------------
+
 ES6:
 
 var [a,,b] = [1,2,3];
@@ -21,7 +22,7 @@ becomes:
 var ref = [1,2,3],
 a = ref[0]
 b = ref[2]
-----------------------------------
+
 ES6:
 
 var name = "Little BoPeep"
@@ -32,14 +33,14 @@ becomes:
 
  name + ' has lost her ' + animal
 
----------------------------------
+
 const x = [1,2,3]
 foo([..x]);
 
 becomes:
 
 foo[].concat(x);
----------------------------------
+
 ES6:
 
 var obj = {
@@ -59,9 +60,9 @@ var obj = {
     return true;
   }
 };
-----------------------------------
-## Destructuring
 
+## Destructuring
+----------------------------------
 Useful for very large objects or objects with very long names and you just want to quickly snatch a value out of it...
 
 var foo = {
@@ -85,7 +86,7 @@ example of usage:
 Promise.all([promise1, promise2]).then(function([results1, results2]) {
   // your responses are automatically assigned to the variables assigned within the arguments passed to the .then()
   })
---------------------------------------
+
 var name = "Will";
 var age = 34;
 
@@ -94,6 +95,7 @@ build an object easily:
 some.method({ name, age })
 
 ## Destructuring arguments
+----------------------------------
 Really useful because you can pass in an object as an argument, and then ES6 destructures the arguments. You can destructure with default values. Also, order of arguments doesn't matter anymore.
 
 before:
@@ -124,7 +126,7 @@ calcBmi({ weight, height, callback: function(){} });
 ```
 
 ##Block Scoping with keyword 'let'
-
+----------------------------------
 Function scoping:
 var a = 1;
 function(){
@@ -147,7 +149,7 @@ Used in two main places:
 2. while statements
 
 ## Const
-
+----------------------------------
 Values created as a 'const' cannot be changed. However, you can mutate objects created with const:
 
 if(true){
@@ -160,6 +162,7 @@ Best practice:
 Const should be used for almost every single value as a default. If you realize that a value is going to change, then change the keyword to 'let'. This helps you as a programmer avoid allowing values to mutate.
 
 ##Classes
+----------------------------------
 Finally, Javascript has classes.
 
 Before, you could create classes in this manner, using a constructor:
@@ -204,6 +207,7 @@ var child = new Child();
 child.bar(); // However, child.foo() cannot work (static)
 
 ##Fat Arrow Functions
+----------------------------------
 var foo = function(a,b){
   return a + b;
 };
@@ -246,7 +250,7 @@ $("something").with().jQuery(() => {
 Instead, stick to function() syntax for JQuery.
 
 ##Modules (NodeJS, etc)
-
+----------------------------------
 // in your module:
 module.exports.foo = function(){
 };
@@ -272,8 +276,8 @@ import myModule from "myModule";
 import { each, omit } from "lodash";
 
 ##async functions
-
-Basically a generator function, that returns a promise that can be used by a .then(): 
+----------------------------------
+Basically a generator function, that returns a promise that can be used by a .then():
 
 async function() {
   // before ES6, keyword 'yeild' was used in the place of 'await'.
