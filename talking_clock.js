@@ -4,6 +4,7 @@
 // 01:30 => 'It's one thirty am"
 // 22:01 => "It's two oh one pm"
 
+// capitalization of variable name indicates a global variable
 const HOURS = [
   'twelve',
   'one',
@@ -55,6 +56,7 @@ const TENS = [
 ]
 
 function sayIt(time){
+  // ES6 feature:
   const [h,m] = time.split(':').map(n => parseInt(n))
   const hour = HOURS[ h % 12 ]
   let minute = ''
