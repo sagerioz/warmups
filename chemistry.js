@@ -20,6 +20,9 @@ function spellWithChemistry(originalWord){
   const results = [];
 
   function getSymbol(word, numChars){
+    //console.log("ONE", word.substring(0, numChars)[0].toUpperCase());
+    //console.log("TWO", word.substring(0, numChars).substring(1));
+
     return word.substring(0, numChars)[0].toUpperCase() +
     word.substring(0, numChars).substring(1);
   }
@@ -28,6 +31,8 @@ function spellWithChemistry(originalWord){
 
 // travering the tree recursively:
   function helper(word, symbols, elements, weight) {
+    console.log("HELPER RECURSIVE FUNC", word, symbols, elements, weight);
+
       if(word.length === 0){
         return results.push({
           output: `${symbols} (${elements.join(', ')})`,
@@ -54,6 +59,11 @@ function spellWithChemistry(originalWord){
   results.sort((a,b) =>
     b.weight - a.weight
   )
-  return results[0];
+  if(results[0] != undefined){
+    return results[0];
+  }else{
+    return "Sorry no results found with your word!"
+  }
+
 }
 console.log(spellWithChemistry("bacon"));
