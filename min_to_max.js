@@ -1,6 +1,6 @@
 // Original problem:
 // https://www.reddit.com/r/dailyprogrammer/comments/69y21t/20170508_challenge_314_easy_concatenated_integers/
-let arr = [7, 3, 45, 2]
+let arr = [2,5,88,342]
 function minMax(input){
 let newArr = arr.map((num) => {
   return num.toString()
@@ -17,15 +17,17 @@ return {
     // the above is the longer way of writing:
     // return (a + b) - (b + a)
   })
-  .reduce((string, value) => {
-    return string + value
-  }),
+  .join(''),
+  // .reduce((string, value) => {
+  //   console.log(string, value);
+  //   return string + value
+  //}),
 
   max : newArr
-    .reverse()
-    .reduce((string, value) => {
-      return string + value
-    })
+    .reverse().join('')
+    // .reduce((string, value) => {
+    //   return string + value
+    // })
 }
 }
 let results = minMax(arr)
