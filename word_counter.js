@@ -1,28 +1,20 @@
-let myStr = "hi hi hi , go, go, hello";
-function wordCounter(text) {
-// sanitize
+let myStr = 'hi, hi. hi, hi. yo? yo! yo yo';
 
-text = text.replace(/[,.]/g, '');
-// count
-
-let result = {};
+let redo = text => {
+text = text.replace(/[,.?!]/g, '');
 
 let words = text.split(' ');
-
-for (let word of words) {
-  result[word] = result[word] || 0 ; // this returns 0
-  result[word] += 1
+let answer = {};
+for(word of words){
+  answer[word] = answer[word] || 0;
+  answer[word] += 1;
 }
-  console.log("result is...", result);
-
-// return object with method
-
 return {
-  count: function(word) {
-    return result[word] || 0
+  count: function(word){
+    return `Your entry of ${word} appears ${answer[word]} times.`
   }
-  // this functions like a class
 }
-};
-let answer = wordCounter(myStr);
-console.log(answer.count("go"));
+}
+let myanswer = redo(myStr);
+console.log(myanswer);
+console.log(myanswer.count('yo'));
