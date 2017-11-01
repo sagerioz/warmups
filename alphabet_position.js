@@ -17,7 +17,7 @@
 
 let myStr = 'It\'s (a) beautiful DAY!!! '
 function alphabetPosition(text) {
-  var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+  var alphabet = ['', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
   let myText = text.replace(/[()&!,. ]/g, '*').toLowerCase().split('');
   myText = myText.filter(letter => {
     if(letter !== '*'){
@@ -31,9 +31,9 @@ function alphabetPosition(text) {
         let letter = myText[i];
         let position = alphabet[j];
         if(letter === position && i === myText.length - 1){
-          answer.push(`${j + 1}`)
-        }else if(letter === position && i < myText.length){
-          answer.push(`${j + 1}, `)
+          answer.push(`${j}`)
+        }else if(letter === position){
+          answer.push(`${j}, `)
         }
       }
   }
