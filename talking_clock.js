@@ -70,4 +70,4 @@ function sayIt(time){
   const suffix = (h < 12) ? 'am' : 'pm'
   return ["It's", hour, minute, suffix].join(' ');
 }
-console.log(sayIt('13:01'));
+console.log(sayIt('13:51'));
