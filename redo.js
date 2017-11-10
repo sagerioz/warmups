@@ -1,60 +1,30 @@
-// Description:
+// How many times do the words in the second array appear in the string?
+let blurb = "Pumpkin bread pudding comes together really easily, and because you have that creaminess already coming from the pumpkin to add to the custard, you don’t need to add as much milk or eggs as you would in a regular bread pudding. I’m not going to call this dessert healthy, but it’s healthy-er? Healthy-ish? Let’s just go with the fact it’s delicious."
+blurb = blurb.replace(/[.!,&?'"-]/g, '');
+let text = blurb.split(' ');
 
-// Lucy loves to travel. Luckily she is a renowned computer
-// scientist and gets to travel to international conferences
-// using her department's budget.
+//let wordsToCount = ["bread", "you", "eggs", "but"];
+function test(word, textToSearch){
+  let obj = {}
+  let answer = {}
+  for (var i = 0; i < textToSearch.length; i++) {
 
-// Each year, Society for Exciting Computer Science Research (SECSR)
-// organizes several conferences around the world. Lucy always picks
-// one conference from that list that is hosted in a city she hasn't
-// been to before, and if that leaves her with more than one option,
-//  she picks the conference that she thinks would be most relevant
-//  for her field of research.
+      let itemToSearch = textToSearch[i]
 
-// Write a function conferencePicker that takes in two arguments:
+      if(itemToSearch === word){
+        if(obj[word]){
+          obj[word] ++;
+        }else{
+          obj[word] = 1;
+        }
 
-// citiesVisited, a list of cities that Lucy has visited before, given
-// as an array of strings.
-// citiesOffered, a list of cities that will host SECSR conferences
-// this year, given as an array of strings. citiesOffered will already
-// be ordered in terms of the relevance of the conferences for Lucy's
-// research (from the most to the least relevant).
-// The function should return the city that Lucy should visit, as a
-// string.
-
-// Also note:
-
-// You should allow for the possibility that Lucy hasn't visited any
-// city before.
-// SECSR organizes at least two conferences each year.
-// If all of the offered conferences are hosted in cities that Lucy
-// has visited before, the function should return 'No worthwhile conferences
-// this year!' (Nothing in Haskell)
-
-// Example:
-
-// citiesVisited = ['Mexico City','Johannesburg','Stockholm','Osaka','Saint Petersburg','London'];
-// citiesOffered = ['Stockholm','Paris','Melbourne'];
-
-// conferencePicker (citiesVisited, citiesOffered);
-// // ---> 'Paris'
-let visited = ['Mexico City', 'Johannesburg', 'Stockholm', 'Osaka', 'Saint Petersburg', 'London'];
-let offered = ['Johannesburg', 'Boulder', 'Mexico City'];
-
-function conferencePicker(citiesVisited, citiesOffered) {
-var cityToGo = "No worthwhile conferences this year!";
-for (var i = citiesOffered.length - 1; i > -1; i--) {
-if (citiesVisited.indexOf(citiesOffered[i]) === -1) {
-  cityToGo = citiesOffered[i];
+    }
+  }
+  return answer = {
+    count: function(word) {
+      return obj[word] || "No results";
+    }
+  }
 }
-}
-return cityToGo;
-} // END FUNCTION
-
-
-
-module.exports = {
-  conferencePicker:conferencePicker,
-  attendance:"WORD UP"
-}
-console.log(conferencePicker(visited, offered));
+let answer = test("pudding", text);
+console.log(answer.count("pudding"));
