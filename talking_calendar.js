@@ -74,4 +74,4 @@ function sayDate(date){
   return ["Date is out of bounds!"].join();
 }
 }
-console.log(sayDate('10/11'))
+console.log(sayDate('10/31'))

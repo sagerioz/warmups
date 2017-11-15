@@ -5,26 +5,9 @@ let text = blurb.split(' ');
 
 //let wordsToCount = ["bread", "you", "eggs", "but"];
 function test(word, textToSearch){
-  let obj = {}
-  let answer = {}
-  for (var i = 0; i < textToSearch.length; i++) {
-
-      let itemToSearch = textToSearch[i]
-
-      if(itemToSearch === word){
-        if(obj[word]){
-          obj[word] ++;
-        }else{
-          obj[word] = 1;
-        }
-
-    }
-  }
-  return answer = {
-    count: function(word) {
-      return obj[word] || "No results";
-    }
-  }
+  let answer = textToSearch.filter(function(el){
+    return el === word
+  })
+  return answer.length;
 }
-let answer = test("pudding", text);
-console.log(answer.count("pudding"));
+console.log(test("you", text));

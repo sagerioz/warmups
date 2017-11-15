@@ -4,7 +4,7 @@ blurb = blurb.replace(/[.!,&?'"-]/g, '');
 let text = blurb.split(' ');
 
 let wordsToCount = ["bread", "you"];
-function test(arr1, arr2){
+function wordCountFunc(arr1, arr2){
 let obj = {};
     for(let i = 0; i < arr1.length; i++){
 		    for(let j = 0; j < arr2.length; j++){
@@ -27,5 +27,16 @@ return results = {
   }
 }
 }
-let answer = test(text, wordsToCount);
+let answer = wordCountFunc(text, wordsToCount);
 console.log(answer.count("you"));
+
+
+// another version:
+
+function wordsCount(word, textToSearch){
+  let count = textToSearch.filter(function(el){
+    return el === word
+  })
+  return count.length;
+}
+console.log(wordsCount("you", text));
