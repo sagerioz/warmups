@@ -71,3 +71,12 @@ var addTo = function(){
         }(btnNum);
     }
 </script>
+
+
+function greet(whattosay){
+  return function(name){
+    console.log(`${whattosay} ${name}`)
+    return `${whattosay} ${name}`;
+  }
+}
+greet("Hi")("Erica");

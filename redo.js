@@ -11,3 +11,12 @@ function test(word, textToSearch){
   return answer.length;
 }
 console.log(test("you", text));
+
+
+
+function greet(whattosay){
+  return function(name){
+    return `${whattosay}${name}!`
+  }
+}
+console.log(greet("Hello, ")("you"));
