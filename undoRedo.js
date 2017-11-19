@@ -21,72 +21,75 @@
 
 
 
-let test = {'Erica': 9709334521, 'Sage': 9799891111}
+let test = { Erica: 9999999999, Sage: 9799891111}
 function undoRedo(object) {
   let arrBackups = [], arrRefs = [], redoObj = {};
   let backup = function(object) {
-          // The object that will keep track of what was in obj when it was passed
-          // in.
-          var objBackup = {};
-            for(var key in object) {
-                try{ objBackup[key] = object[key];
-                      // console.log("BACKUP", objBackup);
-                   }catch(e){
-                       return "Whoops";
-                       }
-           }
-           // Add the backup to the array of backups.
-          arrBackups.push(objBackup);
-          console.log(arrBackups)
- 
-          // Add a reference to obj to the array of references.
-          arrRefs.push(object);
- 
-          // Return a backup ID.
-          console.log("#", arrBackups.length - 1)
-          return arrBackups.length - 1;
-           }
+// The object that will keep track of what was in obj
+// when it was passed in.
+      var objBackup = {};
+      for (let key in object) {
+        objBackup[key] = object[key];
+      }
+
+// Add the backup to the array of backups.
+      arrBackups.push(objBackup);
+
+// Add a reference to obj to the array of references.
+      arrRefs.push(object);
+
+// Return a backup ID.
+      return arrBackups.length - 1;
+  }
 
 
-	return {
-		set: function(key, value) {
+  return {
+	set: function(key, value) {
          backup(object);
          return object[key]=value
     },
-		get: function(key) {
+	get: function(key) {
     return object[key];
     },
-		del: function(key) {
+	del: function(key) {
     backup(object);
     delete object[key];
-          console.log("Deleted action!", object)
+
+         // console.log("Deleted action!", object)
           return object;
     },
 		undo: function() {
-    console.log("We are trying to undo")
-    let backupID = arrBackups.length-1;
-    if(arrBackups.length === 0) {
-      throw new Error("Nothing to undo!");
-    }
     // Reference the backup object.
-    try { var objBackup = arrBackups[backupID];
-    console.log("UNDID IT", objBackup);
-    let redoObj = object;
-    object = objBackup;}catch(e){return 'whoops'}
-    return object;
-
+    try {
+            if(arrBackups.length === 0) throw "Nothing to undo!";
+        }
+        catch(err) {
+          return err;
+        }
+        let backupID = arrBackups.length-1;
+        var objBackup = arrBackups[backupID];
+        let redoObj = object;
+        object = objBackup;
+        arrBackups = [];
+        return object;
     },
 		redo: function() {
-    if(redoObj !== object){
-      throw new Error("Nothing to redo!");    }
-    object = redoObj;
-    return redoObj;
+    try {
+            if(redoObj !== object) throw "Nothing to redo!";
+          }
+          catch(err) {
+            return err;
+          }
+
+        object = redoObj;
+        return redoObj;
     }
 	}
 };
 let answer = undoRedo(test);
-console.log("SET Erica TO 9162923214", answer.set('Erica', 9162923214));
-console.log(answer.get('Erica'));
-console.log("DEL X ", answer.del('Erica'))
+console.log("GET ERICA:", answer.get('Erica'));
+console.log("SET Erica TO 9162923214:", answer.set('Erica', 9162923214));
+console.log("GET ERICA:", answer.get('Erica'));
+console.log("SET Erica TO 1234567890:", answer.set('Erica', 1234567890));
 console.log("UNDO", answer.undo());
-console.log("GET Erica's number", answer.get('Erica'));
+console.log("GET Erica's number:", answer.get('Erica'));
