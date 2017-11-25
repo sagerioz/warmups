@@ -11,24 +11,22 @@
 function minDistance(num) {
 
     var half = Math.floor(num / 2), // Ensures a whole number <= num.
+    // 1 will be a part of every solution.
         str = '1',
-        temp = [], // 1 will be a part of every solution.
+        temp = [],
         i, j;
 
     // Determine our increment value for the loop and starting point.
     num % 2 === 0 ? (i = 2, j = 1) : (i = 3, j = 2);
 
     for (i; i <= half; i += j) {
-      console.log(i, j);
         num % i === 0 ? str += ',' + i : false;
     }
 
     str += ',' + num; // Always include the original number.
-    console.log(str);
 
 
     let arr = str.split(',').map((n) => parseInt(n));
-    console.log(arr);
     for (var k = arr.length-1; k >= 1; k--) {
 
       temp.push(arr[k] - arr[k-1]);
